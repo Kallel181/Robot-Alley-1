@@ -1,0 +1,187 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Prefabs/Prototype/Ground.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Prefabs/Prototype/Wall.tscn" type="PackedScene" id=2]
+[ext_resource path="res://BakeLights/Level.lmbake" type="BakedLightmapData" id=3]
+[ext_resource path="res://Prefabs/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Prefabs/Camera.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Prefabs/Prototype/Object.tscn" type="PackedScene" id=8]
+
+[sub_resource type="Environment" id=4]
+
+[node name="Level" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00367832, 0.00431633, 0.000778198 )
+__meta__ = {
+"_editor_description_": "Essa cena é um teste para algumas funcionalidades basicas e o sistema de Baked Lights"
+}
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.44363, 0 )
+
+[node name="Camera1" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -10 )
+
+[node name="Camera" parent="Camera1" index="0"]
+transform = Transform( -0.642788, 0.439385, -0.627507, 0, 0.819152, 0.573577, 0.766044, 0.368688, -0.526541, -17.4937, 22.5472, -9.30644 )
+
+[node name="CollisionShape" parent="Camera1/Area" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.456, 1.824, 11.5137 )
+
+[node name="Camera2" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -53.8276 )
+
+[node name="Camera" parent="Camera2" index="0"]
+transform = Transform( 0.726395, 0.394206, -0.562985, 0, 0.819152, 0.573577, 0.687278, -0.416643, 0.595028, -17.6595, 22.5472, 32.6599 )
+
+[node name="CollisionShape" parent="Camera2/Area" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.456, 1.824, 11.5137 )
+
+[node name="Camera3" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -38.2474, 3, -53.8276 )
+
+[node name="Camera" parent="Camera3" index="0"]
+transform = Transform( 0.726395, 0.394206, -0.562985, 0, 0.819152, 0.573577, 0.687278, -0.416643, 0.595028, -17.6595, 22.5472, 32.6599 )
+
+[node name="CollisionShape" parent="Camera3/Area" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.456, 1.824, 11.5137 )
+
+[node name="Light and Enviroment" type="Spatial" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Light and Enviroment"]
+environment = SubResource( 4 )
+
+[node name="SpotLight" type="SpotLight" parent="Light and Enviroment"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 39.1768, 0 )
+light_color = Color( 0.423529, 0.835294, 0.945098, 1 )
+shadow_enabled = true
+spot_range = 53.0819
+spot_angle = 37.6956
+
+[node name="SpotLight2" type="SpotLight" parent="Light and Enviroment"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 39.1768, -40.4231 )
+light_color = Color( 0.423529, 0.835294, 0.945098, 1 )
+shadow_enabled = true
+spot_range = 53.0819
+spot_angle = 37.6956
+
+[node name="SpotLight3" type="SpotLight" parent="Light and Enviroment"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -44.9597, 39.1768, -40.4231 )
+light_color = Color( 0.423529, 0.835294, 0.945098, 1 )
+shadow_enabled = true
+spot_range = 53.0819
+spot_angle = 37.6956
+
+[node name="BakedLightmap" type="BakedLightmap" parent="Light and Enviroment"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20.7848, 15.0996, -18.2896 )
+visible = false
+extents = Vector3( 46.5766, 23.6857, 44.34 )
+light_data = ExtResource( 3 )
+
+[node name="Cube" parent="Light and Enviroment" instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 1, 14 )
+
+[node name="Cube2" parent="Light and Enviroment" instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 1, -6 )
+
+[node name="Cube3" parent="Light and Enviroment" instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, -20, 1, -6 )
+
+[node name="Cube4" parent="Light and Enviroment" instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, -20, 1, 14 )
+
+[node name="Cube5" parent="Light and Enviroment" instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 20, 1, 14 )
+
+[node name="Cube6" parent="Light and Enviroment" instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 20, 1, -6 )
+
+[node name="Cube7" parent="Light and Enviroment" instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 20, 1, -26 )
+
+[node name="Cube8" parent="Light and Enviroment" instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 20, 1, -46 )
+
+[node name="Cube9" parent="Light and Enviroment" instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 20, 1, -66 )
+
+[node name="Cube10" parent="Light and Enviroment" instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 9.53674e-07, 1, -66 )
+
+[node name="Cube11" parent="Light and Enviroment" instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, -20, 1, -66 )
+
+[node name="Cube12" parent="Light and Enviroment" instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, -40, 1, -66 )
+
+[node name="Cube13" parent="Light and Enviroment" instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, -60, 1, -66 )
+
+[node name="Cube14" parent="Light and Enviroment" instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, -60, 1, -46 )
+
+[node name="Cube15" parent="Light and Enviroment" instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, -60, 1, -26 )
+
+[node name="Cube16" parent="Light and Enviroment" instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, -40, 1, -26 )
+
+[node name="Cube17" parent="Light and Enviroment" instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, -20, 1, -26 )
+
+[node name="Cube18" parent="Light and Enviroment" instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 9.53674e-07, 1, -26 )
+
+[node name="Cube19" parent="Light and Enviroment" instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 9.53674e-07, 1, -46 )
+
+[node name="Cube20" parent="Light and Enviroment" instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, -20, 1, -46 )
+
+[node name="Cube21" parent="Light and Enviroment" instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, -40, 1, -46 )
+
+[node name="Wall" parent="Light and Enviroment" instance=ExtResource( 2 )]
+transform = Transform( -4.37114e-07, 0, 1, 0, 10, 0, -10, 0, -4.37114e-08, -20, 11, 14 )
+
+[node name="Wall2" parent="Light and Enviroment" instance=ExtResource( 2 )]
+transform = Transform( -4.37114e-07, 0, 1, 0, 10, 0, -10, 0, -4.37114e-08, -20, 11, -6 )
+
+[node name="Wall3" parent="Light and Enviroment" instance=ExtResource( 2 )]
+transform = Transform( -4.37114e-07, 0, 1, 0, 10, 0, -10, 0, -4.37114e-08, -20, 11, -10 )
+
+[node name="Wall4" parent="Light and Enviroment" instance=ExtResource( 2 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 1, -31, 11, -19 )
+
+[node name="Wall5" parent="Light and Enviroment" instance=ExtResource( 2 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 1, -51, 11, -19 )
+
+[node name="Object" parent="Light and Enviroment" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 3, -41 )
+
+[node name="Object2" parent="Light and Enviroment" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 3, -9 )
+
+[node name="Object3" parent="Light and Enviroment" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 3, -38 )
+
+[node name="Object4" parent="Light and Enviroment" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 3, -50 )
+
+[node name="Object5" parent="Light and Enviroment" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 3, -50 )
+
+[node name="Object6" parent="Light and Enviroment" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -42, 3, -36 )
+
+[node name="Object7" parent="Light and Enviroment" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.999999, 3, -28 )
+
+[node name="Object8" parent="Light and Enviroment" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.999999, 3, 10 )
+
+[node name="Object9" parent="Light and Enviroment" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 3, 10 )
+
+[editable path="Camera1"]
+[editable path="Camera2"]
+[editable path="Camera3"]

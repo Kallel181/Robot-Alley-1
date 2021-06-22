@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
+
+[sub_resource type="CubeMesh" id=1]
+
+[sub_resource type="CubeMesh" id=2]
+
+[sub_resource type="CubeMesh" id=3]
+
+[sub_resource type="CapsuleShape" id=4]
+height = 1.70863
+
+[node name="Player" type="KinematicBody"]
+script = ExtResource( 1 )
+
+[node name="Body" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.517816, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Body2" type="MeshInstance" parent="Body"]
+transform = Transform( 0.804741, 0, 0, 0, 0.313952, 0, 0, 0, 0.969679, 0, 0.147343, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="Foot1" type="MeshInstance" parent="Body"]
+transform = Transform( 0.222496, 0, 0, 0, 0.16207, 0, 0, 0, 1.51303, -0.495217, -0.323969, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Foot2" type="MeshInstance" parent="Body"]
+transform = Transform( 0.222496, 0, 0, 0, 0.16207, 0, 0, 0, 1.51303, 0.489771, -0.323969, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Frente" type="MeshInstance" parent="Body"]
+transform = Transform( 0.143585, 0, 0, 0, 0.0922466, -0.293483, 0, 0.0468156, 0.578286, 0, 0.637351, -1.05054 )
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="MainCollision" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.503146, 0 )
+shape = SubResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="RayCast" type="RayCast" parent="."]
+enabled = true
+cast_to = Vector3( 0, -2, 0 )
